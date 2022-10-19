@@ -73,6 +73,9 @@ In the other hand, with the second dataset (alpha trait and silent carrier pheno
 
 At this point as the model performed well I decided to do a feature selection calculating the importance of each feature and plotting them in a graph. The lowest contributor was sex, so I created a new dataframe dropping the sex feature. After that I decide to go further with a PCA.  I need to scale the data with MinMaxScaler and split in train and test first. Plotting the explained variance of the components, I saw that two components gets most the explained variation, so I made a scatterplot expecting see two groups of dots of the two phenotypes.
 
+![imagen](https://user-images.githubusercontent.com/115868725/196647409-0e482371-1fc5-4926-9a64-d16353941391.png)
+
+
 ### Metrics
 
 Both Dummy classifier and the selected classifier models will be evaluated with the metrics recall, f1 and fbeta. In this kind of test, to detect all the not normal phenotypes is the main goal. It means as less false negatives the better, even some false positives could happen. This is why have chosen recall as first evaluation metrics, f1 to see the global performance between recall and precision, and finally fbeta to see a whole vision but with recall predominance. 
@@ -85,20 +88,26 @@ First I used StratifiedShuffleSplit to select the best Clasiffier to my dataset.
 
 In the first stage of screening to select the best algorithm I found only small differences in both datasets. In the carrier/normal dataset, mostly models perform around f1 = 0.5, the same as the Dummy model. Adaboost rise 0.53 so that was the reason I selected it. In the alpha trait/silent carrier dataset, things were different and the models rise 0.61 as minimum to 0.68 of ExtraTreeClassifier, comparised with 0.49 of the dummy model. After selecting the best hyperparameters and fitting both models, in the fisrt dataset the comparison with the dummy model in recall, f1 and  fbeta was: 
 
-Dummy 0.338235 0.359375 0.373377 
-AdaBoost 0.598739 0.609524 0.620578  
+![imagen](https://user-images.githubusercontent.com/115868725/196647801-bfefd81d-4890-45d2-8db5-a7afd1953ecd.png)
+
 
 In the second dataset the three metrics show the following results:
 
-Dummy 0.40 0.400705 0.399241
-ExtraTreeClf 0.75 0.777778 0.753968
+![imagen](https://user-images.githubusercontent.com/115868725/196648044-d3411916-844f-4e9b-9d9b-8cbd1d840284.png)
 
 In the alpha trait/silent carrier dataset, after scaling the data and dropping the sex feature, the value of fbeta rises 0.82. 
 
 ## Conclusion
 
 The developed models has success beating the benchmark model, the Scikit-Learn’s Dummy Classifier. Despite of that, in the dataset of carrier/normal, the improvement is too slow, I consider it is far from be a usable model in a real situations. Probably the differences between both groups are too small to build a good Classifier, and more data (adding more relevant features) is needed to improve the model. 
-The second model is significantly better than the dummy model, with values in its metrics that makes it a point of start for a model to implement in clinical practice. Surprises me that after PCA, the 2 principal component explain 83% of the variance, but it is not reflected creating a group of dots for each phenotype. Perhaps high variance at some features doesn’t imply a high significance for classification.
+The second model is significantly better than the dummy model, with values in its metrics that makes it a point of start for a model to implement in clinical practice. 
+
+Surprises me that after PCA, the 2 principal component explain 83% of the variance, but it is not reflected creating a group of dots for each phenotype. 
+
+![imagen](https://user-images.githubusercontent.com/115868725/196647502-8ce6a3eb-e24f-4990-b344-32950f56b220.png)![imagen](https://user-images.githubusercontent.com/115868725/196647642-70b283c2-9651-462d-9d90-0781f83bdcf7.png)
+
+
+Perhaps high variance at some features doesn’t imply a high significance for classification.
 
 
 
