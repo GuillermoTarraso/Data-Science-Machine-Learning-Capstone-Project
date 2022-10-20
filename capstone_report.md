@@ -73,7 +73,7 @@ In the other hand, with the second dataset (alpha trait and silent carrier pheno
 
 At this point as the model performed well I decided to do a feature selection calculating the importance of each feature and plotting them in a graph. The lowest contributor was sex, so I created a new dataframe dropping the sex feature. After that I decide to go further with a PCA.  I need to scale the data with MinMaxScaler and split in train and test first. Plotting the explained variance of the components, I saw that two components gets most the explained variation, so I made a scatterplot expecting see two groups of dots of the two phenotypes.
 
-![imagen](https://user-images.githubusercontent.com/115868725/196647409-0e482371-1fc5-4926-9a64-d16353941391.png)
+![imagen](https://user-images.githubusercontent.com/115868725/196921911-e4a57a39-ce53-475b-ad61-0f123efca922.png)
 
 
 ### Metrics
@@ -86,14 +86,14 @@ First I used StratifiedShuffleSplit to select the best Clasiffier to my dataset.
 
 ## Results and Analysis
 
-In the first stage of screening to select the best algorithm I found only small differences in both datasets. In the carrier/normal dataset, mostly models perform around f1 = 0.5, the same as the Dummy model. Adaboost rise 0.53 so that was the reason I selected it. In the alpha trait/silent carrier dataset, things were different and the models rise 0.61 as minimum to 0.68 of ExtraTreeClassifier, comparised with 0.49 of the dummy model. After selecting the best hyperparameters and fitting both models, in the fisrt dataset the comparison with the dummy model in recall, f1 and  fbeta was: 
+In the first stage of screening to select the best algorithm I found only small differences in both datasets. In the carrier/normal dataset, mostly models perform around f1 = 0.5-0.53, the same as the Dummy model. Adaboost rise 0.57 so that was the reason I selected it. In the alpha trait/silent carrier dataset, things were different and the models rise 0.65 as minimum to 0.69 of ExtraTreeClassifier, comparised with 0.5 of the dummy model. After selecting the best hyperparameters and fitting both models, in the fisrt dataset the comparison with the dummy model in recall, f1 and  fbeta was: 
 
-![imagen](https://user-images.githubusercontent.com/115868725/196647801-bfefd81d-4890-45d2-8db5-a7afd1953ecd.png)
+![imagen](https://user-images.githubusercontent.com/115868725/196921997-a4913975-d844-4922-beeb-4defd686691b.png)
 
 
 In the second dataset the three metrics show the following results:
 
-![imagen](https://user-images.githubusercontent.com/115868725/196648044-d3411916-844f-4e9b-9d9b-8cbd1d840284.png)
+![imagen](https://user-images.githubusercontent.com/115868725/196922101-f7412b34-89ff-4726-bb73-d7958df8b983.png)
 
 In the alpha trait/silent carrier dataset, after scaling the data and dropping the sex feature, the value of fbeta rises 0.82. 
 
@@ -104,8 +104,7 @@ The second model is significantly better than the dummy model, with values in it
 
 Surprises me that after PCA, the 2 principal component explain 83% of the variance, but it is not reflected creating a group of dots for each phenotype. 
 
-![imagen](https://user-images.githubusercontent.com/115868725/196647502-8ce6a3eb-e24f-4990-b344-32950f56b220.png)![imagen](https://user-images.githubusercontent.com/115868725/196647642-70b283c2-9651-462d-9d90-0781f83bdcf7.png)
-
+![imagen](https://user-images.githubusercontent.com/115868725/196922299-ad4abbcf-dbb9-4d72-a5dc-d81b24cad1cb.png)![imagen](https://user-images.githubusercontent.com/115868725/196922414-3767f816-82c4-4ea5-aa26-16ebe54366e6.png)
 
 Perhaps high variance at some features doesn’t imply a high significance for classification.
 
