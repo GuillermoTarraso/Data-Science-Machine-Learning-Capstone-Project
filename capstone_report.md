@@ -77,26 +77,33 @@ In this first approximation, the two datasets gave different results. In the fir
 ![imagen](https://user-images.githubusercontent.com/115868725/201141137-be3171e2-206f-41b9-9a2d-cf3bc791dd0a.png)
 
 I created validation curves to select the best hyperparameters for Adaboost, so I used validation curves with StratifiedKFold to select the best number of estimators and learning rate. 
-![imagen](https://user-images.githubusercontent.com/115868725/201141592-8f6d4cb5-5226-4298-9621-dc20d8ec8ac4.png)![imagen](https://user-images.githubusercontent.com/115868725/201141754-1d8987ba-e62a-4d6d-b8bb-22c9b3b3f566.png)
+
+![imagen](https://user-images.githubusercontent.com/115868725/201146621-294ed4cc-5fc3-42eb-8ca0-3e610f72163b.png)
+
+![imagen](https://user-images.githubusercontent.com/115868725/201146681-7fef5231-3e6f-4e73-a060-f02ac61e090c.png)
 
 Then I fit the Adaboost model with the best hyperparameters and I made a learning curve also with StratifiedKFold to check for possible overfittings. I plotted the confusion matrix for models (AdaBoost and Dummy) and finally, I calculated recall f1 and fbeta. 
 
-![imagen](https://user-images.githubusercontent.com/115868725/201141966-3e95a8da-1c88-4d9d-8d2e-714331d10db6.png)
-![imagen](https://user-images.githubusercontent.com/115868725/201142033-c92e75e2-0bd6-4b6c-a061-bdd5538cfca9.png)![imagen](https://user-images.githubusercontent.com/115868725/201142113-e0ea0c7c-7c33-407e-ad54-fa713318617e.png)
+![imagen](https://user-images.githubusercontent.com/115868725/201147783-edde74dc-114b-4b0d-9899-be9c8f4dfa25.png)
+
+![imagen](https://user-images.githubusercontent.com/115868725/201147836-89fb25b9-34a1-4f8e-bed3-417314b99604.png)![imagen](https://user-images.githubusercontent.com/115868725/201147888-630fef34-b246-4e25-8fe2-ca6bd163f411.png)
 
 
 On the other hand, with the second dataset (alpha trait and silent carrier phenotypes) ExtraTreesClassifier gets the highest scores, so I used this algorithm in the second dataset. 
 
 ![imagen](https://user-images.githubusercontent.com/115868725/201142382-5c56cfd0-3100-46a7-b27d-d1c450cc9122.png)
 
-As with the first data set, I made learning curves to select the best max_depth and min_samples_split, and with the best options, I fit the model. 
+As with the first data set, I made validation curves to select the best max_depth and min_samples_split, and with the best options, I fit the model. 
 
-![imagen](https://user-images.githubusercontent.com/115868725/201142663-8836a8c9-70ed-4364-89f6-ec5acba2a964.png)
-![imagen](https://user-images.githubusercontent.com/115868725/201142757-e38e9d63-52f2-47e0-9d50-80626448e318.png)
+![imagen](https://user-images.githubusercontent.com/115868725/201147002-7c648e1b-c6d4-43c1-b16d-842cdfd246f6.png)
 
-Then, I plotted a learning curve and confusion matrix as well, to finally evaluate the model with the chosen metrics. 
-![imagen](https://user-images.githubusercontent.com/115868725/201142842-c0cdb5d3-16fa-45d7-bc50-5e2cdb3e006b.png)
-![imagen](https://user-images.githubusercontent.com/115868725/201142897-090c9c09-b009-4815-8c5a-3678cc6e0642.png)![imagen](https://user-images.githubusercontent.com/115868725/201142993-05121032-e14b-4d04-b928-7ea9b0836cf0.png)
+![imagen](https://user-images.githubusercontent.com/115868725/201147072-73ba3d52-786e-46ba-9bbc-cbd7e4a9326e.png)
+
+Then, I plotted a learning curve and confusion matrix as well, to finally evaluate the model with the chosen metrics.
+
+![imagen](https://user-images.githubusercontent.com/115868725/201147471-2fa2ff39-2cb4-4547-87a3-1f3b57c21205.png)
+
+![imagen](https://user-images.githubusercontent.com/115868725/201147566-da682e85-8ef6-43d2-aba1-445d9dabd651.png)![imagen](https://user-images.githubusercontent.com/115868725/201147628-5a63c0c7-0437-486f-b915-317b1ac83bfe.png)
 
 At this point as the model performed well I decided to do a feature selection calculating the importance of each feature and plotting them in a graph. The lowest contributor was sex, so I created a new dataframe dropping the sex feature. After that, I decided to go further with a PCA. I need to scale the data with MinMaxScaler and split it into train and test first. Plotting the explained variance of the components, I saw that two components get most of the explained variation, so 
 
