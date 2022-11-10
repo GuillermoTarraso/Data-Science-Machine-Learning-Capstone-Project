@@ -2,11 +2,11 @@
 
 This is my (Guillermo Tarrasó) capstone project for the Data Science & Machine Learning course from Coding Nomads.
 
-The aim of this project is to develop and train two Machine Learning-based diagnostic classification models to differentiate Thalassemia Carrier states based on full blood count and/or Haemoglobin variants.
+This project aims to develop and train two Machine Learning-based diagnostic classification models to differentiate Thalassemia Carrier states based on full blood count and/or Haemoglobin variants.
 
 ## How to use this Repository:
 - Read the [Capstone Proposal](capstone_proposal_Thalassemia.md). This is a text file with the background and a brief description of the design of the project. 
-- The file [Capstone Report](capstone_report.md) contains a summary of the methodology used in the project, the results and the conclusions.
+- The file [Capstone Report](capstone_report.md) contains a summary of the methodology used in the project, the results, and the conclusions.
 - [Plotting](plotting.py) is an accessory file for some of the plots.
 
 ### Datasets
